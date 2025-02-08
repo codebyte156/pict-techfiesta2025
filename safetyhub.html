@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearest Places</title>
+    <link href="img/favicon.ico" rel="icon">
+</head>
+<body>
+    <header class="header">
+        <div class="navbar">
+            <ul>
+                <li>Home</li>
+                <li>ReportIncident</li>
+                <li>SearchReport</li>
+                <li>EmergencyContacts</li>
+                <li>SafetyHub</li>
+                <li>ChatBot</li>
+            </ul>
+        </div>
+        <button class="emergency-btn">EmergencySOS</button>
+    </header>
+    
+    <h1>Locate nearest important places</h1>
+    <p>Ensure your safety by locating nearest police station and hospital</p>
+    <button class="start-tracking" onclick="startTracking()">Find location</button>
+
+    <section id="map-container">
+        <div class="map"></div>
+    </section>
+
+    <section id="info" class="hidden">
+        <h2>Nearest Police Station</h2>
+        <p id="police">Nearest Police Station: Loading...</p>
+        <button id="navigate-police" class="btn hidden" onclick="navigatePolice()">Navigate to Police Station</button>
+        <h2>Nearest Hospital</h2>
+        <p id="hospital" class="hospital">Nearest Hospital: Loading...</p>
+        <button id="navigate-hospital" class="btn hidden" onclick="navigateHospital()">Navigate to Hospital</button>
+    </section>
+</body>
+</html>
