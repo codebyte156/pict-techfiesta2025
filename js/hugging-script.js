@@ -5,9 +5,54 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
     const location = document.getElementById('location').value;
     const dateOfIncident = document.getElementById('dateOfIncident').value;
     const description = document.getElementById('description').value;
+    const victimname = document.getElementById('victimname').value;
+    const victimage = document.getElementById('victimage').value;
+    const phydescriptionvictim = document.getElementById('phydescriptionvictim').value;
+    const injuriesorharm = document.getElementById('injuriesorharm').value;
+    const accusedname = document.getElementById('accusedname').value;
+    const accuseddescription = document.getElementById('accuseddescription').value;
+    const accusedrelationship = document.getElementById('accusedrelationship').value;
+    const accusedaddresscontact = document.getElementById('accusedaddresscontact').value;
+    const weapons = document.getElementById('weapons').value;
+    const eventsequence = document.getElementById('eventsequence').value;
+    const witnesses = document.getElementById('witnesses').value;
+    const modeofcrime = document.getElementById('modeofcrime').value;
+    const damage = document.getElementById('damage').value;
+    const laws = document.getElementById('laws').value;
+    const evidence = document.getElementById('evidence').value;
+    const complainantdetails = document.getElementById('complainantdetails').value;
+    const complainantnumber = document.getElementById('complainantnumber').value;
+    const complainantaddress = document.getElementById('complainantaddress').value;
+    const dateandtimeofreport = document.getElementById('dateandtimeofreport').value;
 
     if (incidentType && location && dateOfIncident && description) {
-        const prompt = `Incident involving ${incidentType}. The place of incident is ${location} and the date is ${dateOfIncident}. Detailed description of the incident: ${description}.`;
+        const prompt = `Incident involving ${incidentType}. 
+        The place of incident is ${location} and the date is ${dateOfIncident}. 
+
+        Detailed description of the incident: ${description}. 
+
+        Victim Details:  
+        Name: ${victimname}, Age: ${victimage}, Physical Description: ${phydescriptionvictim}, Injuries or Harm: ${injuriesorharm}.  
+
+        Accused Details:  
+        Name: ${accusedname}, Description: ${accuseddescription}, Relationship with Victim: ${accusedrelationship},  
+        Address & Contact: ${accusedaddresscontact}.  
+
+        Crime Details:  
+        Weapons Used: ${weapons}, Mode of Crime: ${modeofcrime}, Event Sequence: ${eventsequence}.  
+
+        Witnesses: ${witnesses}.  
+        Damage/Loss: ${damage}.  
+
+        Legal Aspects:  
+        Relevant Laws: ${laws}, Evidence Collected: ${evidence}.  
+
+        Complainant Details:  
+        Name: ${complainantdetails}, Contact Number: ${complainantnumber}, Address: ${complainantaddress}.  
+
+        Report Details:  
+        Date & Time of Report: ${dateandtimeofreport}.`;
+
         await generateReport(prompt);
 
         document.getElementById('getHelpButton').style.display = 'inline-block';
