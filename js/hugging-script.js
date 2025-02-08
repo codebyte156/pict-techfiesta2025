@@ -1,9 +1,29 @@
-document.getElementById('incidentForm').addEventListener('submit', async function (event) {
-    event.preventDefault();
+// Firebase Code and connectivity------------------------------------------------------------------------
 
-    const incidentType = document.getElementById('incidentType').value;
-    const location = document.getElementById('location').value;
-    const dateOfIncident = document.getElementById('dateOfIncident').value;
+// Firebase Configuration
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB4HYrucSTLrP3e9MPfiRfCRj003lKxtDU",
+    authDomain: "safety-reports-pict.firebaseapp.com",
+    projectId: "safety-reports-pict",
+    storageBucket: "safety-reports-pict.firebasestorage.app",
+    messagingSenderId: "976553129981",
+    appId: "1:976553129981:web:1e85d6202bf2e8d4d94b94",
+    measurementId: "G-SQ8505FPMF"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+// Handle Confirm Report & Send
+document.getElementById("confirmReportButton").addEventListener("click", async () => {
+    const incidentType = document.getElementById("incidentType").value;
+    const location = document.getElementById("location").value;
+    const dateOfIncident = document.getElementById("dateOfIncident").value;
     const victimname = document.getElementById('victimname').value;
     const victimage = document.getElementById('victimage').value;
     const phydescriptionvictim = document.getElementById('phydescriptionvictim').value;
@@ -25,6 +45,57 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
     const dateandtimeofreport = document.getElementById('dateandtimeofreport').value;
 
     if (incidentType && location && dateOfIncident) {
+        try {
+            const docRef = await addDoc(collection(db, "reports"), {
+                incidentType,
+                location,
+                dateOfIncident, victimname, victimage, phydescriptionvictim, injuriesorharm, accusedname, accusedname,
+                accuseddescription, accusedrelationship, accusedaddresscontact, weapons, eventsequence, witnesses, modeofcrime,
+                damage, laws, evidence, complainantdetails, complainantnumber, complainantaddress, dateandtimeofreport,
+                timestamp: new Date().toISOString(),
+            });
+            alert(`Report submitted successfully! Your Report ID: ${docRef.id}`);
+        } catch (error) {
+            console.error("Error adding document: ", error);
+        }
+    } else {
+        alert("Please fill in all fields.");
+    }
+});
+
+
+
+
+// Form Filling Logic------------------------------------------------------------------------------------
+
+document.getElementById('incidentForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const incidentType = document.getElementById("incidentType").value;
+    const location = document.getElementById("location").value;
+    const dateOfIncident = document.getElementById("dateOfIncident").value;
+    const victimname = document.getElementById('victimname').value;
+    const victimage = document.getElementById('victimage').value;
+    const phydescriptionvictim = document.getElementById('phydescriptionvictim').value;
+    const injuriesorharm = document.getElementById('injuriesorharm').value;
+    const accusedname = document.getElementById('accusedname').value;
+    const accuseddescription = document.getElementById('accuseddescription').value;
+    const accusedrelationship = document.getElementById('accusedrelationship').value;
+    const accusedaddresscontact = document.getElementById('accusedaddresscontact').value;
+    const weapons = document.getElementById('weapons').value;
+    const eventsequence = document.getElementById('eventsequence').value;
+    const witnesses = document.getElementById('witnesses').value;
+    const modeofcrime = document.getElementById('modeofcrime').value;
+    const damage = document.getElementById('damage').value;
+    const laws = document.getElementById('laws').value;
+    const evidence = document.getElementById('evidence').value;
+    const complainantdetails = document.getElementById('complainantdetails').value;
+    const complainantnumber = document.getElementById('complainantnumber').value;
+    const complainantaddress = document.getElementById('complainantaddress').value;
+    const dateandtimeofreport = document.getElementById('dateandtimeofreport').value;
+    
+
+    if (incidentType && location && dateOfIncident ) {
         const prompt = `Incident involving ${incidentType}. 
         The place of incident is ${location} and the date is ${dateOfIncident}. 
 
@@ -49,7 +120,6 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
 
         Report Details:  
         Date & Time of Report: ${dateandtimeofreport}.`;
-
         await generateReport(prompt);
 
         document.getElementById('getHelpButton').style.display = 'inline-block';
@@ -151,32 +221,44 @@ function formatReportText(text) {
     return paragraphs;
 }
 
+
+
+
+
+// DO NOT MAKE ANY CHANGES AFTER THIS------------------------------------------------------------------------------
+
+
 // Add images functionality
 document.getElementById('addImageButton').addEventListener('click', function () {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
-    
+
     fileInput.addEventListener('change', function (e) {
         const file = e.target.files[0];
         const reader = new FileReader();
-        
+
         reader.onload = function (event) {
             const imgElement = document.createElement('img');
-            imgElement.src = event.target.result;
+            imgElement.src = event.target.result; // Base64 string
             imgElement.style.maxWidth = '100%';
             imgElement.style.margin = '10px 0';
 
+            // Debug: Log the Base64 data
+            console.log("Image Base64 Data: ", imgElement.src);
+
+            // Append image to the report content div
             document.getElementById('reportContent').appendChild(imgElement);
         };
 
         if (file) {
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file); // Convert image to Base64
         }
     });
 
     fileInput.click();
 });
+
 
 // Download PDF functionality
 document.getElementById('downloadPDFButton').addEventListener('click', function () {
@@ -185,54 +267,71 @@ document.getElementById('downloadPDFButton').addEventListener('click', function 
     const reportContent = document.getElementById('reportContent');
     const textContent = reportContent.innerText || reportContent.textContent;
 
-    const margins = { top: 20, left: 10, bottom: 10 };
+    const pageWidth = doc.internal.pageSize.width;
+    const margins = { top: 20, left: 10, right: 10 };
     let yPosition = margins.top;
     const lineHeight = 10;
 
-    // Add the title, date, and description to the PDF
-    doc.text("Incident Report", margins.left, yPosition);
-    yPosition += lineHeight;
+    // 1. Generate Image PDF
+    const imageDoc = new jsPDF();
+    const imageWidth = 180; // Width of the image in the PDF
+    const imageHeight = 120; // Height of the image in the PDF
+    const pageHeight = imageDoc.internal.pageSize.height;
 
+    // Add the title
+    doc.setFontSize(16);
+    doc.text("Incident Report", pageWidth / 2, yPosition, { align: "center" });
+    yPosition += lineHeight * 2;
+
+    // Add the incident details
     const headerText = `Incident Type: ${document.getElementById('incidentType').value}
     Location: ${document.getElementById('location').value}
     Date: ${document.getElementById('dateOfIncident').value}`;
-    
-    doc.text(headerText, margins.left, yPosition);
-    yPosition += lineHeight * 2;  // Spacing before description
+    doc.setFontSize(12);
+    const headerLines = doc.splitTextToSize(headerText, pageWidth - margins.left - margins.right);
+    doc.text(headerLines, margins.left, yPosition);
+    yPosition += headerLines.length * lineHeight + 5;
 
-    // Add the generated report content
-    const generatedReportText = document.getElementById('reportContent').innerText || document.getElementById('reportContent').textContent;
-    doc.text(generatedReportText, margins.left, yPosition);
-    yPosition += lineHeight * 2;  // Additional space after generated text
-
-    // Add images if they exist
+    // Add images from reportContent div
     const images = reportContent.getElementsByTagName('img');
-    let imageYPosition = yPosition + 20;  // Space after text
-
     for (let i = 0; i < images.length; i++) {
         const img = images[i];
-        const imgData = img.src;
+        const imgData = img.src; // Base64 image data
 
-        // Check if image exceeds page height and create a new page
-        if (imageYPosition > doc.internal.pageSize.height - 20) {
-            doc.addPage();  // Create a new page
-            imageYPosition = margins.top;  // Reset image position to top of the new page
+        // Debug: Log the Base64 string
+        console.log("Adding Image to PDF: ", imgData);
+
+
+        // Insert the image into the PDF
+        doc.addImage(imgData, 'JPEG', margins.left, yPosition, 50, 60); // Adjust dimensions as needed
+        yPosition += 70; // Add spacing after the image
+    }
+
+// For making Images.pdf file   
+    
+    if (images.length > 0) {
+        for (let i = 0; i < images.length; i++) {
+            const img = images[i];
+            const imgData = img.src;
+
+            // Add the image to the page
+            imageDoc.addImage(imgData, 'JPEG', margins.left, margins.top, imageWidth, imageHeight);
+
+            // If it's not the last image, add a new page
+            if (i < images.length - 1) {
+                imageDoc.addPage();
+            }
         }
 
-        // Insert each image into the PDF with dynamic Y-position
-        doc.addImage(imgData, 'JPEG', margins.left, imageYPosition, 50, 60); // Adjust x, y, width, height as needed
-        imageYPosition += 10; // Adjust vertical spacing after each image
+        // Save Image PDF
+        imageDoc.save('incident_images.pdf');
+    } 
+    else {
+        alert('No images to save in the image PDF.');
     }
+    
 
     // Save the PDF
     doc.save('incident_report.pdf');
 });
 
-
-
-function toggleMenu() {
-    document.getElementById("navbar").classList.toggle("show");
-}
-
-const hamburger = document.querySelector(".hamburger");
-    hamburger.classList.toggle("active");
