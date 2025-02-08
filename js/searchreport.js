@@ -7,7 +7,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyB4HYrucSTLrP3e9MPfiRfCRj003lKxtDU",
     authDomain: "safety-reports-pict.firebaseapp.com",
     projectId: "safety-reports-pict",
-    storageBucket: "safety-reports-pict.appspot.com",
+    storageBucket: "safety-reports-pict.firebasestorage.app",
     messagingSenderId: "976553129981",
     appId: "1:976553129981:web:1e85d6202bf2e8d4d94b94",
     measurementId: "G-SQ8505FPMF"
@@ -29,31 +29,45 @@ document.getElementById("searchReportButton").addEventListener("click", async ()
             if (docSnap.exists()) {
                 const data = docSnap.data();
 
-                // Function to format the description into paragraphs
-                const formatDescription = (text, maxWordsPerLine) => {
-                    const words = text.split(" ");
-                    let formattedText = "";
-                    for (let i = 0; i < words.length; i++) {
-                        formattedText += words[i] + " ";
-                        if ((i + 1) % maxWordsPerLine === 0) {
-                            formattedText += "<br>";
-                        }
-                    }
-                    return formattedText.trim();
-                };
-
-                // Format the description (limit to 8 words per line, for example)
-                const formattedDescription = formatDescription(data.description, 8);
-
                 // Create the formatted HTML with centered content
                 const formattedReport = `
                 <div class="report-container">
-                    <p><strong>Report ID: </strong>${reportId}</p>
+                    <p><strong>Report ID:</strong> ${reportId}</p>
                     <p><strong>Incident Type:</strong> ${data.incidentType}</p>
                     <p><strong>Location:</strong> ${data.location}</p>
                     <p><strong>Date of Incident:</strong> ${data.dateOfIncident}</p>
-                    <p><strong>Description:</strong><br>${formattedDescription}</p>
+
+                    <h3>Victim Details</h3>
+                    <p><strong>Name:</strong> ${data.victim.name}</p>
+                    <p><strong>Age:</strong> ${data.victim.age}</p>
+                    <p><strong>Physical Description:</strong> ${data.victim.physicalDescription}</p>
+                    <p><strong>Injuries:</strong> ${data.victim.injuries}</p>
+
+                    <h3>Accused Details</h3>
+                    <p><strong>Name:</strong> ${data.accused.name}</p>
+                    <p><strong>Description:</strong> ${data.accused.description}</p>
+                    <p><strong>Relationship:</strong> ${data.accused.relationship}</p>
+                    <p><strong>Contact/Address:</strong> ${data.accused.contact}</p>
+
+                    <h3>Crime Details</h3>
+                    <p><strong>Weapons Used:</strong> ${data.crimeDetails.weaponsUsed}</p>
+                    <p><strong>Mode of Crime:</strong> ${data.crimeDetails.modeOfCrime}</p>
+                    <p><strong>Sequence of Events:</strong><br>${data.crimeDetails.eventSequence}</p>
+                    <p><strong>Witnesses:</strong> ${data.crimeDetails.witnesses}</p>
+                    <p><strong>Damage Caused:</strong> ${data.crimeDetails.damage}</p>
+
+                    <h3>Legal Details</h3>
+                    <p><strong>Relevant Laws:</strong> ${data.legal.relevantLaws}</p>
+                    <p><strong>Evidence Collected:</strong> ${data.legal.evidenceCollected}</p>
+
+                    <h3>Complainant Details</h3>
+                    <p><strong>Name:</strong> ${data.complainant.name}</p>
+                    <p><strong>Contact Number:</strong> ${data.complainant.contactNumber}</p>
+                    <p><strong>Address:</strong> ${data.complainant.address}</p>
+
+                    <h3>Report Information</h3>
                     <p><strong>Reported At:</strong> ${new Date(data.timestamp).toLocaleString()}</p>
+                    <p><strong>Date & Time of Report:</strong> ${data.reportDetails.dateAndTimeOfReport}</p>
                 </div>
                 `;
                 document.getElementById("searchResult").innerHTML = formattedReport;
