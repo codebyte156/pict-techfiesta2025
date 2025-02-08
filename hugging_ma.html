@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>घटना अहवाल प्रणाली</title>
+    <link rel="stylesheet" href="./css/hugging-style.css">
+</head>
+<body>
+    <!-- नेव्हिगेशन बार -->
+    <header>
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#">मुख्यपृष्ठ</a></li>
+                <li><a href="#">घटना नोंदवा</a></li>
+                <li><a href="#">तातडीची मदत</a></li>
+                <li><a href="#">स्थान ट्रॅक करा</a></li>
+                <li><a href="#">संपर्क</a></li>
+            </ul>
+            <button class="emergency-btn">तातडीची एसओएस मदत</button>
+            <ul>
+                <li class="language-selector">
+                    <a href="hugging.html">EN</a> | <a href="hugging_hi.html">HI</a>|<a href="hugging_ma.html">MAR</a>
+                 </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1><strong>घटना अहवाल प्रणाली</strong></h1><br>
+        <p><b>घटना अहवाल तयार करण्यासाठी खालील तपशील भरा</b></p>
+
+        <!-- घटना फॉर्म -->
+         <br>
+        <form id="incidentForm">
+            <label for="incidentType">घटनेचा प्रकार:</label>
+            <input type="text" id="incidentType" name="incidentType" placeholder="उदा. बाल मजुरी" required>
+
+            <label for="location">स्थान:</label>
+            <input type="text" id="location" name="location" placeholder="उदा. पुणे, नवी पेठ" required>
+
+            <label for="dateOfIncident">घटनेची तारीख:</label>
+            <input type="date" id="dateOfIncident" name="dateOfIncident" required>
+
+            <label for="description">घटनेचे वर्णन:</label>
+            <textarea id="description" name="description" placeholder="घटनेचे तपशील..." required></textarea>
+
+            <button type="submit" class="generate">अहवाल तयार करा</button>
+        </form>
+
+        <!-- तयार केलेला अहवाल -->
+        <div id="generatedReport">
+            <h2>तयार केलेला अहवाल:</h2>
+            <div id="reportContent"></div>
+            <div class="button-group">
+                <button id="getHelpButton" style="display: none;">आवश्यक मदत घ्या</button>
+                <button id="confirmReportButton">अहवाल पुष्टी करा आणि पाठवा</button>
+                <button id="gpsLocationButton">जीपीएस स्थान</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/hugging-script.js"></script>
+</body>
+</html>
