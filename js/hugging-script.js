@@ -24,7 +24,7 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
     const complainantaddress = document.getElementById('complainantaddress').value;
     const dateandtimeofreport = document.getElementById('dateandtimeofreport').value;
 
-    if (incidentType && location && dateOfIncident && description) {
+    if (incidentType && location && dateOfIncident) {
         const prompt = `Incident involving ${incidentType}. 
         The place of incident is ${location} and the date is ${dateOfIncident}. 
 
