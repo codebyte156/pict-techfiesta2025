@@ -28,6 +28,43 @@
                 font-size: 20px;
                 font-weight: 600;
             }
+            .sub-header {
+                background: #000000;
+                padding: 15px;
+                text-align: center;
+                color: white;
+                font-size: 28px;
+                font-weight: 700;
+            }
+
+            /*Navigation Bar*/
+             nav ul {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin: 0 15px;
+                font-weight: bold;
+            }
+
+            nav ul li a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1rem;
+                padding: 5px 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            nav ul li a:hover {
+                color: #015222;
+                background-color: rgba(255, 255, 255, 0.829);
+            
+            }
+
             /*Emergency SOS Help Button*/
             .emergency-btn{
                 background: #d91d2a; 
@@ -42,6 +79,19 @@
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
                 text-align: center; 
             }
+            .emergency-btn a{
+                color: #fff; 
+                text-decoration: none;
+                display: inline-block;
+            }
+            .emergency-btn:hover {
+                transform: scale(1.1);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); 
+                background: #d91d2a; 
+            }
+            /*Chat bot Circular Button*/
+
+
         </style>
         <body>
             <div class="sub-header">
@@ -58,10 +108,10 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="hugging.html">Report Incident</a></li>
-                        <li><a href="">Emergency Help</a></li>
+                        <li><a href="emergency.html">Emergency Help</a></li>
                         <li><a href="safetyhub.html">Safety Hub</a></li>
-                        <li><a href="">Search Report</a></li>
-                        <li><button class="emergency-btn"><a>Emergency SOS Help</a></button></li>
+                        <li><a href="searchreport.html">Search Report</a></li>
+                        <li><button class="emergency-btn"><a href="emergency.html">Emergency SOS Help</a></button></li>
                     </ul>
                 </nav>
         </div>
