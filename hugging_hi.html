@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>घटना रिपोर्टिंग प्रणाली</title>
-    <link rel="stylesheet" href="./css/hugging-style.css">
+    <title>हादसा रिपोर्टिंग प्रणाली</title>
+    <link rel="stylesheet" href="css/hugging-style.css">
 </head>
 <body>
-    <!-- नेविगेशन बार -->
+    <!-- Navigation Bar -->
     <header>
         <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
         <nav id="navbar">
             <ul>
-                <li><a href="#">होम</a></li>
-                <li><a href="#">घटना रिपोर्ट करें</a></li>
-                <li><a href="#">आपातकालीन सहायता</a></li>
-                <li><a href="#">स्थान ट्रैक करें</a></li>
-                <li><a href="#">संपर्क</a></li>
+                <li><a href="index.html">घर</a></li>
+                <li><a href="hugging.html">रिपोर्ट हादसा</a></li>
+                <li><a href="emergency.html">आपातकालीन सहायता</a></li>
+                <li><a href="SafetyHub.html">सुरक्षा हब</a></li>
+                <li><a href="SearchReport.html">खोज रिपोर्ट</a></li>
+                <li><a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json" target="_blank">ChatBot</a></li>
             </ul>
-            <button class="emergency-btn">आपातकालीन एसओएस सहायता</button>
+            <button class="emergency-btn"><a href="https://emergency-email-sys-cqpftfxzbrgkhtvnbuevqt.streamlit.app/">Emergency SOS Help</a></button>
             <ul>
                 <li class="language-selector">
                     <a href="hugging.html">EN</a> | <a href="hugging_hi.html">HI</a>|<a href="hugging_ma.html">MAR</a>
@@ -28,39 +29,142 @@
     </header>
 
     <div class="container">
-        <h1><strong>घटना रिपोर्टिंग प्रणाली</strong></h1><br>
-        <p><b>घटना की रिपोर्ट बनाने के लिए नीचे दिए गए विवरण भरें</b></p>
+        <h1><strong>हादसा रिपोर्टिंग प्रणाली</strong></h1><br>
+        <p><b>एक घटना रिपोर्ट उत्पन्न करने के लिए नीचे दिए गए विवरण भरें</b></p>
 
-        <!-- घटना फॉर्म -->
+        <!-- Incident Form -->
          <br>
         <form id="incidentForm">
-            <label for="incidentType">घटना का प्रकार:</label>
-            <input type="text" id="incidentType" name="incidentType" placeholder="उदाहरण: बाल श्रम" required>
+
+            <label id= "heading1" for="heading">हादसे का मूल विवरण</label>
+
+            <label for="incidentType">हादसा प्रकार:</label>
+            <input type="text" id="incidentType" name="incidentType" placeholder="e.g., Child Labor" required>
+            <button type="button" class="voice-btn" data-target="incidentType">🎙️</button>
 
             <label for="location">स्थान:</label>
-            <input type="text" id="location" name="location" placeholder="उदाहरण: पुणे, नवी पेठ" required>
+            <input type="text" id="location" name="location" placeholder="e.g., Pune, Navi Peth" required>
+            <button type="button" class="voice-btn" data-target="location">🎙️</button>
 
-            <label for="dateOfIncident">घटना की तारीख:</label>
+            <label for="dateOfIncident">हादसे की तारीख:</label>
             <input type="date" id="dateOfIncident" name="dateOfIncident" required>
+            <button type="button" class="voice-btn" data-target="dateOfIncident">🎙️</button>
 
-            <label for="description">घटना का विवरण:</label>
-            <textarea id="description" name="description" placeholder="घटना के बारे में विवरण..." required></textarea>
+            <label id= "heading2" for="heading">विक्टिम का विवरण</label>
 
-            <button type="submit" class="generate">रिपोर्ट बनाएं</button>
+            <label for="victimname">क्या आप विक्टिम का नाम जानते हैं:</label>
+            <input type="text" id="victimname" name="victimname" placeholder="If no, then please type NO | NA" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="victimname">🎙️</button>
+
+            <label for="victimage">विक्टिम की उम्र</label>
+            <input type="text" id="victimage" name="victimage" placeholder="To categorize the case under relevant laws (e.g., POCSO for minors)" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="victimage">🎙️</button>
+
+            <label for="phydescriptionvictim">पीड़ित का शारीरिक विवरण</label>
+            <input type="text" id="phydescriptionvictim" name="phydescriptionvictim" placeholder="Height, weight, clothing at the time of the incident" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="phydescriptionvictim">🎙️</button>
+
+            <label for="injuriesorharm">चोट या नुकसान पीड़ित </label>
+            <input type="text" id="injuriesorharm" name="injuriesorharm" placeholder="Any physical injuries or psychological trauma." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="injuriesorharm">🎙️</button>
+
+            <label id= "heading3" for="heading">अभियुक्त का विवरण (यदि ज्ञात हो)</label>
+            
+
+            <label for="accusedname">अभियुक्त का नाम</label>
+            <input type="text" id="accusedname" name="accusedname" placeholder="If known, provide their full name, else NA" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="accusedname">🎙️</button>
+
+            <label for="accuseddescription"> अभियुक्त का भौतिक विवरण </label>
+            <input type="text" id="accuseddescription" name="accuseddescription" placeholder="Height, build, complexion, and identifiable marks." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="accuseddescription">🎙️</button>
+
+            <label for="accusedrelationship">अभियुक्त के साथ संबंध (यदि ज्ञात हो)</label>
+            <input type="text" id="accusedrelationship" name="accusedrelationship" placeholder="If the victim knows the accused (e.g., family member, employer, neighbor, stranger)." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="accusedrelationship">🎙️</button>
+
+            <label for="accusedaddresscontact"> पता और संपर्क विवरण</label>
+            <input type="text" id="accusedaddresscontact" name="accusedaddresscontact" placeholder="If available." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="accusedaddresscontact">🎙️</button>
+
+            <label for="weapons"> हथियार प्रयुक्त (यदि कोई हो)  </label>
+            <input type="text" id="weapons" name="weapons" placeholder="Mention if the accused used any weapon (e.g., knife, gun, acid)." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="weapons">🎙️</button>
+            
+
+            <label id= "heading4" for="heading">हादसे का विवरण</label>
+
+            <label for="eventsequence">  घटनाओं की अनुक्रम  </label>
+            <input type="text" id="eventsequence" name="eventsequence" placeholder="A detailed chronological account of what happened." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="eventsequence">🎙️</button>
+
+            <label for="witnesses"> गवाह (यदि कोई हो)</label>
+            <input type="text" id="witnesses" name="witnesses" placeholder="Names and contact details of people who witnessed the incident" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="witnesses">🎙️</button>
+
+            <label for="modeofcrime"> अपराध का तरीका  </label>
+            <input type="text" id="modeofcrime" name="modeofcrime" placeholder="How the crime was committed (e.g., physical attack, online abuse, blackmail, etc.)." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="modeofcrime">🎙️</button>
+
+            <label for="damage"> चोरी या क्षतिग्रस्त (यदि लागू हो) </label>
+            <input type="text" id="damage" name="damage" placeholder="In case of theft or property damage, Else type NA" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="damage">🎙️</button>
+
+
+            <label id= "heading5" for="heading">कानूनी पहलू और सहायक साक्ष्य</label>
+
+            <label for="laws"> कानून के प्रासंगिक अनुभाग </label>
+            <input type="text" id="laws" name="laws" placeholder="Please use our ChatBot for knowing more about the Laws and your Rights" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="laws">🎙️</button>
+
+            <label for="evidence"> सहायक साक्ष्य (यदि उपलब्ध हो)</label>
+            <input type="text" id="evidence" name="evidence" placeholder="Photos or videos of the crime scene, Medical reports (if injuries occurred), Call recordings or chat messages (in case of harassment or threats). CCTV footage (if available)." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="evidence">🎙️</button>
+
+            <label id= "heading6" for="description">शिकायत और हस्ताक्षर</label>
+
+
+            <label for="complainantdetails"> शिकायतकर्ता का विवरण </label>
+            <input type="text" id="complainantdetails" name="complainantdetails" placeholder="Name, address, contact details, and relation to the victim (if different)." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="complainantdetails">🎙️</button>
+
+            <label for="complainantnumber"> शिकायतकर्ता की संपर्क संख्या </label>
+            <input type="text" id="complainantnumber" name="complainantnumber" placeholder="To authenticate the Report (+91 )." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="complainantnumber">🎙️</button>
+
+            <label for="complainantaddress">  शिकायतकर्ता का पता </label>
+            <input type="text" id="complainantaddress" name="complainantaddress" placeholder="Current Residential address of the Complainant" contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="complainantaddress">🎙️</button>
+
+            <label for="dateandtimeofreport"> रिपोर्ट पंजीकरण की तिथि और समय  </label>
+            <input type="text" id="dateandtimeofreport" name="dateandtimeofreport" placeholder="The exact date and time when the report is filed." contenteditable="true" required></input type="text">
+            <button type="button" class="voice-btn" data-target="dateandtimeofreport">🎙️</button>
+
+
+
+
+
+            <button type="submit" class="generate">रिपोर्ट जनरेट करें</button>
+
         </form>
 
-        <!-- उत्पन्न रिपोर्ट -->
+        <!-- Generated Report -->
         <div id="generatedReport">
-            <h2>उत्पन्न रिपोर्ट:</h2>
-            <div id="reportContent"></div>
+            <h2>Generated Report:</h2>
+            <div id="reportContent" contenteditable="true"></div>  
             <div class="button-group">
                 <button id="getHelpButton" style="display: none;">आवश्यक सहायता प्राप्त करें</button>
-                <button id="confirmReportButton">रिपोर्ट की पुष्टि करें और भेजें</button>
+                <button id="confirmReportButton">रिपोर्ट और भेजें की पुष्टि करें</button>
                 <button id="gpsLocationButton">जीपीएस स्थान</button>
+                <button id="addImageButton">छवियाँ जोड़ें</button>  
+                <button id="downloadPDFButton">पीडीएफ डाउनलोड करें</button>  
             </div>
         </div>
     </div>
+    <a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json" class="circle-button"></a>
 
-    <script src="./js/hugging-script.js"></script>
+
+    <script src="js/hugging-script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </body>
 </html>
