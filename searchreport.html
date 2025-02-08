@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CareVault : Incident Report Tracker</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <link href="img/favicon.ico" rel="icon">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300|Nunito:400,700&display=swap" rel="stylesheet">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">        
+        <link href="vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="vendor/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="./css/searchreport.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/searchreport.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+<body>
+    <header class="header">
+        <div class = "container-fluid">
+            <div class="logo pull-left" style="display: flex; align-items: center;">
+                <a href="index.html">
+                    <img src="img/favicon.ico" alt="Logo" title="CareVault Logo" style="height: 50px; margin-right: 10px; margin-top: -10px">
+                </a>
+                <h2 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: #ffffff;">CareVault</a></h2>
+            </div>
+        </div>
+
+        <!-- Navigation Bar section please do not modify without contacting Rahul-->
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+        <nav id="navbar">
+            <ul>
+                <li></li>
+                <li> <a href="index.html">Home</a> </li>
+                <li> <a href="hugging.html">Report Incident</a> </li>
+                <li> <a href="emergency.html">Emergency Help</a> </li>
+                <li> <a href="safetyhub.html">Safety Hub</a> </li>
+                <li> <a href="searchreport.html">Search Report</a> </li>
+                <li> <a href="events.html">Events</a> </li>
+                <li> <a href="">Severity</a> </li>
+                <li> <button class="emergency-btn"><a href=>Emergency SOS Help</a> </button> </li>
+                <li> <a href=""></a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="background"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1 class="title">Incident Report Tracker</h1>
+
+        <!-- Search Section -->
+        <div class="search-box">
+            <h2>Search for Report</h2>
+            <input type="text" id="searchReportId" placeholder="Enter Report ID">
+            <button type="button" id="searchReportButton">Search Report</button>
+            <div id="searchResult" style=" display: block; font-family: Arial, sans-serif; font-size: 16px;"></div>
+        </div>
+
+        <div class="tracking-box">
+            <div class="tracking-steps">
+                <!-- First Step -->
+                <div class="step" id="step1">
+                    <button class="btn">
+                        <i class="fa-solid fa-file-circle-check"></i>
+                    </button>
+                    <span class="step-text"><br>Report <br></span>
+                </div>
+
+                <!-- Connector -->
+                <div class="connector" id="connector1"></div>
+
+                <!-- Second Step -->
+                <div class="step" id="step2">
+                    <button class="btn">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                    <span class="step-text"><br>Report Submitted<br></span>
+                </div>
+
+                <!-- Connector -->
+                <div class="connector" id="connector2"></div>
+
+                <!-- Third Step -->
+                <div class="step" id="step3">
+                    <button class="btn">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <span class="step-text"><br>Authorities Notified<br></span>
+                </div>
+
+                <!-- Connector -->
+                <div class="connector" id="connector3"></div>
+
+                <!-- Fourth Step -->
+                <div class="step" id="step4">
+                    <button class="btn">
+                        <i class="fa-solid fa-briefcase-medical"></i>
+                    </button>
+                    <span class="step-text"><br>Action Taken<br></span>
+                </div>
+            </div>
+
+
+    </div>
+    <a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json" class="circle-button"></a>
+
+    <script type= "module" src="/js/searchreport.js"></script>
+    <script src="/js/searchreport-hamburger.js"></script>
+</body>
+</html>

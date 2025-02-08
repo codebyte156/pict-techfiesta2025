@@ -1,0 +1,410 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: url('../img/safety.webp') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    position: relative;
+}
+
+/* Header Section Styling :  */
+.header {
+    padding: 30px 0;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition: all 0.3s;
+    z-index: 997;
+    background-color: #000000;
+
+}
+
+.header.header-scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px 0;
+    height: 72px;
+    transition: all 0.3s;
+}
+
+.header .logo {
+    float: left;
+}
+
+.header .logo h1 {
+    font-size: 34px;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 5px;
+}
+
+.header .logo h1 a:hover {
+    color: #ffffff;
+}
+
+
+.header .logo img {
+    padding: 0;
+    margin: 0;
+    max-height: 100%;
+}
+
+
+
+/* Navigation Components Section Styling :  */
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+nav ul li {
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #015222;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Emergency Button Styling : */
+
+.emergency-btn {
+    background: #d91d2a; 
+    border: none;
+    padding: 1px 1px;
+    color: #fff; 
+    margin-top: -8px;
+    font-size: 0.9rem; 
+    font-weight: bold;
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    text-align: center; 
+}
+
+.emergency-btn a {
+    color: #fff; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
+/* Background Styling */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(255, 255, 255, 0.9); */
+    z-index: -1;
+}
+
+/* Main Container Styling */
+.container {
+    background: #fff;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 800px;
+    width: 90%;
+    margin-top: 270px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.report-id {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.generated-id {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Search Box Styling */
+.search-box {
+    margin-bottom: 30px;
+}
+
+#searchReportId {
+    padding: 10px;
+    width: 70%;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+}
+
+#searchReportButton {
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#searchReportButton:hover {
+    background: #45a049;
+}
+
+/* Tracking Box Styling */
+.tracking-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+/* Pulse Animation for Tracking */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Tracking Steps Styling */
+.tracking-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 20px 0;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.step .btn {
+    background: #e0e0e0;
+    color: #666;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Completed Step Styling */
+.step.completed .btn {
+    background: #4CAF50;
+    color: #fff;
+}
+
+/* Step Text Styling */
+.step-text {
+    font-size: 1rem;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+.step.completed .btn:hover {
+    background: #45a049;
+}
+
+/* Connector Styling (Green Line) */
+.connector {
+    height: 4px;
+    background: #4CAF50;
+    position: absolute;
+    top: 40%;
+    z-index: 1;
+    transform: translateY(-50%);
+    width: 0;
+    transition: width 6s ease;
+    margin-left: 75px;
+    max-width: 80%;
+}
+
+/* When a Step is Completed, Extend the Connector */
+.step.completed ~ .connector {
+    width: 100%;
+}
+
+/* Report Container Styling */
+.report-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styling for the Report */
+.report-header {
+    color: #2a7d7d;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Paragraph Styling for the Report */
+.report-container p {
+    line-height: 1.6;
+    color: #333;
+    font-size: 1em;
+}
+
+/* Emphasize the Strong Tags in Report */
+.report-container strong {
+    color: #2a7d7d;
+    font-weight: bold;
+}
+
+.circle-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    background: linear-gradient(144deg, #2ECC71, #27AE60 50%, #1E8449);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 300ms;
+}
+
+.circle-button:hover {
+    background: linear-gradient(144deg, #1E8449, #166534 50%, #0B3D20);
+    border-color: #27AE60;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+  
+  .circle-button::after {
+    content: "ChatBot"; /* Chat icon */
+    font-size: 20px;
+    color: white;
+  }
+  
+
+  
+/* Mobile View Styling Section :  */
+
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        z-index: 1001;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(140, 127, 127, 0.6);
+        backdrop-filter: blur(10px); 
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        position: fixed; 
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        margin-top: -100px;
+    }
+
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        padding: 20px 0;
+        list-style: none;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    .logo {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        z-index: 1001;
+    }
+
+    
+    .carousel-background img {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
