@@ -103,7 +103,7 @@
                         <h2 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: #ffffff;">CareVault</a></h2>
                     </div>
                 </div>
-                <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+                <!--<button class="hamburger" onclick="toggleMenu()">&#9776;</button>-->
                 <nav id="navbar">
                     <ul>
                         <li><a href="index.html">Home</a></li>
@@ -114,7 +114,22 @@
                         <li><button class="emergency-btn"><a href="emergency.html">Emergency SOS Help</a></button></li>
                     </ul>
                 </nav>
-        </div>
+            </div>
+            <div class="container">
+                <h2><strong>Find Emergency Numbers in Your City</strong></h2>
+                <div class="dropdown">
+                    <select id="cityDropdown" onchange="updateNumbers()">
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Nashik">Nashik</option>
+                        <option value="Nagpur">Nagpur</option>
+                    </select>
+                </div>
+                
+
+                </select>
+            </div>
+
         
 
         <a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json" target="_blank" class="circle-button"></a>
