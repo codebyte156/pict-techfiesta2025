@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nearest Places</title>
     <link href="img/favicon.ico" rel="icon">
+    <link href="/css/safetyhub.css" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -21,9 +22,11 @@
         <button class="emergency-btn">EmergencySOS</button>
     </header>
     
-    <h1>Locate nearest important places</h1>
-    <p>Ensure your safety by locating nearest police station and hospital</p>
-    <button class="start-tracking" onclick="startTracking()">Find location</button>
+    <div class="find">
+        <h1>Locate nearest important places</h1>
+        <p>Ensure your safety by locating nearest police station and hospital</p>
+        <button class="start-tracking" onclick="startTracking()">Find location</button>
+    </div>
 
     <section id="map-container">
         <div class="map"></div>
@@ -37,5 +40,7 @@
         <p id="hospital" class="hospital">Nearest Hospital: Loading...</p>
         <button id="navigate-hospital" class="btn hidden" onclick="navigateHospital()">Navigate to Hospital</button>
     </section>
+
+    <script src="/js/safetyhub.js"></script>
 </body>
 </html>
