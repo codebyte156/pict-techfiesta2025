@@ -1,6 +1,7 @@
 let map, marker, policeMarker, hospitalMarker, service;
-let nearestPoliceLocation; // Store the nearest police station's location
-let nearestHospitalLocation; // Store the nearest hospital's location
+let nearestPoliceLocation;
+let nearestHospitalLocation;
+let peopleMarkers = []; // Store markers for nearby people
 
 function initMap(lat, lng) {
     if (!map) {
@@ -24,8 +25,8 @@ function initMap(lat, lng) {
 
     findNearestPolice(lat, lng);
     findNearestHospital(lat, lng);
+    placeNearbyPeople(lat, lng);
 
-    // Scroll to the map after it's initialized
     document.getElementById("map-container").scrollIntoView({ behavior: "smooth" });
 }
 
@@ -42,20 +43,21 @@ function findNearestPolice(lat, lng) {
             if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
                 const nearest = results[0];
                 document.getElementById("police").textContent = `${nearest.name}, ${nearest.vicinity}`;
-                nearestPoliceLocation = nearest.geometry.location; // Save the location for navigation
+                nearestPoliceLocation = nearest.geometry.location;
 
                 policeMarker = new google.maps.Marker({
                     position: nearest.geometry.location,
                     map: map,
                     title: "Nearest Police Station",
-                    label: "Police Station", // Label for Police Station
+                    label: "Police Station",
+                    // icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
                 });
 
                 document.getElementById("info").classList.remove("hidden");
                 document.getElementById("navigate-btn").classList.remove("hidden");
             } else {
                 document.getElementById("police").textContent = "Nearest Police Station: Not Found.";
-                nearestPoliceLocation = null; // Reset if no station is found
+                nearestPoliceLocation = null;
             }
         }
     );
@@ -73,36 +75,45 @@ function findNearestHospital(lat, lng) {
         (results, status) => {
             if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
                 const nearest = results[0];
-                const hospitalInfo = document.createElement("p");
-                document.getElementById("hospital").classList.remove("hidden");
-                hospitalInfo.classList.add("hospital");
-                hospitalInfo.textContent = `${nearest.name}, ${nearest.vicinity}`;
+                document.getElementById("hospital").textContent = `${nearest.name}, ${nearest.vicinity}`;
                 
-                nearestHospitalLocation = nearest.geometry.location; // Save the location for navigation
+                nearestHospitalLocation = nearest.geometry.location;
 
                 hospitalMarker = new google.maps.Marker({
                     position: nearest.geometry.location,
                     map: map,
                     title: "Nearest Hospital/Clinic",
-                    label: "Hospital", // Label for Hospital
+                    label: "Hospital",
+                    // icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
                 });
-                
-                document.getElementById("hospital").appendChild(hospitalInfo);
-
-                // Add a "Navigate to Hospital" button
-                const navigateHospitalButton = document.createElement("button");
-                navigateHospitalButton.textContent = "Navigate to Hospital";
-                navigateHospitalButton.className = "btn";
-                navigateHospitalButton.onclick = navigateToHospital;
-                document.getElementById("hospital").appendChild(navigateHospitalButton);
             } else {
-                const hospitalInfo = document.createElement("p");
-                hospitalInfo.textContent = "Nearest Hospital/Clinic: Not Found.";
-                document.getElementById("hospital").appendChild(hospitalInfo);
-                nearestHospitalLocation = null; // Reset if no hospital is found
+                document.getElementById("hospital").textContent = "Nearest Hospital/Clinic: Not Found.";
+                nearestHospitalLocation = null;
             }
         }
     );
+}
+
+function placeNearbyPeople(lat, lng) {
+    const colors = ["yellow", "green", "purple", "orange", "pink"];
+    
+    peopleMarkers.forEach(marker => marker.setMap(null)); // Clear previous markers
+    peopleMarkers = [];
+    
+    for (let i = 0; i < 5; i++) {
+        const randLat = lat + (Math.random() - 0.5) * 0.01;
+        const randLng = lng + (Math.random() - 0.5) * 0.01;
+        
+        const personMarker = new google.maps.Marker({
+            position: { lat: randLat, lng: randLng },
+            map: map,
+            title: `Person ${i + 1}`,
+            label: `Person${i + 1}`,
+            icon: `http://maps.google.com/mapfiles/ms/icons/${colors[i]}-dot.png`
+        });
+        
+        peopleMarkers.push(personMarker);
+    }
 }
 
 function startTracking() {
@@ -126,7 +137,7 @@ function navigate() {
         const lat = nearestPoliceLocation.lat();
         const lng = nearestPoliceLocation.lng();
         const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-        window.open(googleMapsUrl, "_blank"); // Open in a new tab
+        window.open(googleMapsUrl, "_blank");
     } else {
         alert("No police station found to navigate.");
     }
@@ -137,16 +148,15 @@ function navigateToHospital() {
         const lat = nearestHospitalLocation.lat();
         const lng = nearestHospitalLocation.lng();
         const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-        window.open(googleMapsUrl, "_blank"); // Open in a new tab
+        window.open(googleMapsUrl, "_blank");
     } else {
         alert("No hospital found to navigate.");
     }
 }
-
 
 function toggleMenu() {
     document.getElementById("navbar").classList.toggle("show");
 }
 
 const hamburger = document.querySelector(".hamburger");
-    hamburger.classList.toggle("active");
+hamburger.classList.toggle("active");
