@@ -54,7 +54,7 @@
                 text-align: center;
                 font-weight: 700;
             }
-            
+
             /*Cards Styling*/
             .contact-cards {
                 display: flex;
@@ -150,7 +150,7 @@
                 background-color:  #d91d2a; 
             }
             /*Chat bot Circular Button*/
-
+            
             /*Logo Styling*/
             .logo {
                     position: absolute;
@@ -205,20 +205,44 @@
                 ],
                 Pune: [
                     { type: "🚔 Police", numbers: "<b>100, 112</b> <br>📞 Whatsapp Helpline: <b>8975283100</b>" },
-                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/Ufech2ZPYX9P97Y46' target='_blank'>Sahyadri Hospital</a>: 8888822222 <br><a href='https://maps.app.goo.gl/qRa7tinKhZD4N3ns8' target='_blank'>Ruby Hall Clinic</a>: 020-66455100" },
-                    { type: "📞 Helplines", numbers: "Child Helpline: 1098 <br>Women Helpline: 020-25533333" }
+                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/Ufech2ZPYX9P97Y46' target='_blank'>Sahyadri Hospital</a>: 8888822222 <br><a href='https://maps.app.goo.gl/qRa7tinKhZD4N3ns8' target='_blank'>Ruby Hall Clinic</a>: <br>020-66455100" },
+                    { type: "📞 Helplines", numbers: "Child Helpline - 1098 <br>Women Helpline - 020-25533333" }
                 ],
                 Nashik: [
-                    { type: "🚔 Police", numbers: "<b>100 or 112</b> <br>📞 Police Infoline: <b>1090</b>" },
-                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/bm77PEWCroBM8DEo9' target='_blank'>Bhagvati Hospital</a>: 022-28932461 <br><a href='https://maps.app.goo.gl/DEYMTzrgs7uyFuSGA' target='_blank'>KEM Hospital</a>: 022-24107000" },
-                    { type: "📞 Helplines", numbers: "Child Helpline: 1098 <br>Women Helpline: 022-22633333" }
+                    { type: "🚔 Police", numbers: "<b>100 or 112</b> <br>📞 Police Infoline : <br><b>0253-2305233</b>" },
+                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/nPX5nbD2tv4wmWpNA' target='_blank'>Apollo Hospital</a>: 02533521066 <br><a href='https://maps.app.goo.gl/F86EqLzw6we5bhQt6' target='_blank'>Civil Hospital</a>: 02532576106" },
+                    { type: "📞 Helplines", numbers: "Child Helpline – 1098 <br> Women Helpline – 1091" }
                 ],
                 Nagpur: [
-                    { type: "🚔 Police", numbers: "<b>100, 112</b> <br>📞 Whatsapp Helpline: <b>8975283100</b>" },
-                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/Ufech2ZPYX9P97Y46' target='_blank'>Sahyadri Hospital</a>: 8888822222 <br><a href='https://maps.app.goo.gl/qRa7tinKhZD4N3ns8' target='_blank'>Ruby Hall Clinic</a>: 020-66455100" },
-                    { type: "📞 Helplines", numbers: "Child Helpline: 1098 <br>Women Helpline: 020-25533333" }
+                    { type: "🚔 Police", numbers: "<b>100, 112</b> <br>📞 Police Helpline: <b>8888755968</b>" },
+                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/43bNeUDuvgU2AxWk6' target='_blank'>KRIMS Hospital</a>:  07122451188 <br><a href='https://maps.app.goo.gl/YpzuVoJ8ZuxezgBm8' target='_blank'>Ayushman Nagpur Hospital</a>: <br>07030974619" },
+                    { type: "📞 Helplines", numbers: "Child Helpline - 1098 <br>Women Helpline - 1091" }
                 ]
             };
+            function updateNumbers() {
+                const city = document.getElementById("cityDropdown").value;
+                const cardsContainer = document.getElementById("contactCards");
+                cardsContainer.innerHTML = "";
+
+                contactData[city].forEach(entry => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+                    card.innerHTML = `
+                        <h5 class="card-title">${entry.type}</h5>
+                        <p class="card-text">${entry.numbers}</p>
+                    `;
+                    cardsContainer.appendChild(card);
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", updateNumbers);
+
+            function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("show");
+            }
+
+            const hamburger = document.querySelector(".hamburger");
+                hamburger.classList.toggle("active");
 
             </script>
         
