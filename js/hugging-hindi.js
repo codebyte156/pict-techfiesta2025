@@ -256,7 +256,6 @@ document.getElementById('downloadPDFButton').addEventListener('click', function 
         imageYPosition += 10; // Adjust vertical spacing after each image
     }
 
-    // Save the PDF
-    doc.save('incident_report.pdf');
+    doc.save('incident_report.pdf'); 
 });
 
