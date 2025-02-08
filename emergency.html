@@ -36,6 +36,61 @@
                 font-size: 28px;
                 font-weight: 700;
             }
+            .container {
+                max-width: 800px;
+                margin: auto;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .dropdown select {
+                width: 100%;
+                padding: 14px;
+                font-size: 22px;
+                border-radius: 8px;
+                border: 2px solid #1dbf73;
+                background-color: #fff;
+                color: #1dbf73;
+                text-align: center;
+                font-weight: 700;
+            }
+
+            .contact-cards {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 20px;
+            }
+
+            .card {
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                padding: 25px;
+                background: white;
+                text-align: center;
+                transition: transform 0.3s ease-in-out;
+                font-size: 20px;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            .card-title {
+                font-weight: 700;
+                color: #1dbf73;
+                font-size: 24px;
+            }
+
+            .card-text {
+                color: #333;
+                font-size: 20px;
+                font-weight: 500;
+            }
 
             /*Navigation Bar*/
              nav ul {
@@ -61,7 +116,7 @@
 
             nav ul li a:hover {
                 color: #015222;
-                background-color: rgba(255, 255, 255, 0.829);
+                background-color: rgba(255, 255, 255, 0.829); 
             
             }
 
@@ -83,14 +138,28 @@
                 color: #fff; 
                 text-decoration: none;
                 display: inline-block;
+               
+
             }
+
             .emergency-btn:hover {
                 transform: scale(1.1);
                 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); 
                 background: #d91d2a; 
             }
+            .emergency-btn a:hover {
+                color: #ffffff;
+                background-color:  #d91d2a; 
+            }
             /*Chat bot Circular Button*/
 
+            /*Logo Styling*/
+            .logo {
+                    position: absolute;
+                    top: 10px;
+                    left: 20px;
+                    z-index: 1001;
+                }
 
         </style>
         <body>
@@ -106,6 +175,7 @@
                 <!--<button class="hamburger" onclick="toggleMenu()">&#9776;</button>-->
                 <nav id="navbar">
                     <ul>
+                        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="hugging.html">Report Incident</a></li>
                         <li><a href="emergency.html">Emergency Help</a></li>
@@ -126,10 +196,33 @@
                     </select>
                 </div>
                 
-
-                </select>
+                <div class="contact-cards" id="contactCards"></div>
             </div>
+            <script>
+                const contactData = {
+                Mumbai: [
+                    { type: "🚔 Police", numbers: "<b>100 or 112</b> <br>📞 Police Infoline: <b>1090</b>" },
+                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/bm77PEWCroBM8DEo9' target='_blank'>Bhagvati Hospital</a>: 022-28932461 <br><a href='https://maps.app.goo.gl/DEYMTzrgs7uyFuSGA' target='_blank'>KEM Hospital</a>: 022-24107000" },
+                    { type: "📞 Helplines", numbers: "Child Helpline: 1098 <br>Women Helpline: 022-22633333" }
+                ],
+                Pune: [
+                    { type: "🚔 Police", numbers: "<b>100, 112</b> <br>📞 Whatsapp Helpline: <b>8975283100</b>" },
+                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/Ufech2ZPYX9P97Y46' target='_blank'>Sahyadri Hospital</a>: 8888822222 <br><a href='https://maps.app.goo.gl/qRa7tinKhZD4N3ns8' target='_blank'>Ruby Hall Clinic</a>: 020-66455100" },
+                    { type: "📞 Helplines", numbers: "Child Helpline: 1098 <br>Women Helpline: 020-25533333" }
+                ],
+                Nashik: [
+                    { type: "🚔 Police", numbers: "<b>100 or 112</b> <br>📞 Police Infoline: <b>1090</b>" },
+                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/bm77PEWCroBM8DEo9' target='_blank'>Bhagvati Hospital</a>: 022-28932461 <br><a href='https://maps.app.goo.gl/DEYMTzrgs7uyFuSGA' target='_blank'>KEM Hospital</a>: 022-24107000" },
+                    { type: "📞 Helplines", numbers: "Child Helpline: 1098 <br>Women Helpline: 022-22633333" }
+                ],
+                Nagpur: [
+                    { type: "🚔 Police", numbers: "<b>100, 112</b> <br>📞 Whatsapp Helpline: <b>8975283100</b>" },
+                    { type: "🏥 Hospitals", numbers: "<a href='https://maps.app.goo.gl/Ufech2ZPYX9P97Y46' target='_blank'>Sahyadri Hospital</a>: 8888822222 <br><a href='https://maps.app.goo.gl/qRa7tinKhZD4N3ns8' target='_blank'>Ruby Hall Clinic</a>: 020-66455100" },
+                    { type: "📞 Helplines", numbers: "Child Helpline: 1098 <br>Women Helpline: 020-25533333" }
+                ]
+            };
 
+            </script>
         
 
         <a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json" target="_blank" class="circle-button"></a>
