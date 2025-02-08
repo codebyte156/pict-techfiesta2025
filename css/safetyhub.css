@@ -1,115 +1,305 @@
-/* General Styles */
+/* General body and html settings */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: url('../img/events.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: 'Arial Black', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Navbar */
-.header {
-    background: black;
-    padding: 10px 0;
+/* Background image applied to the entire page */
+body {
+    background: url('../img/safety.webp') center/cover no-repeat fixed;
+    color: #fff;
 }
 
-.navbar {
+/* Header styling */
+header {
+    height: 100vh;
     display: flex;
-    justify-content: center;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
-}
-
-.navbar li {
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    cursor: pointer;
-    padding: 10px;
-}
-
-.navbar li:hover {
-    text-decoration: underline;
-}
-
-/* Emergency Button */
-.emergency-btn {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    background: red;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-/* Main Content */
-.find {
-    text-align: center;
-    color: black;
-}
-
-.start-tracking {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.start-tracking:hover {
-    background: #0056b3;
-}
-
-/* Map Container */
-#map-container {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-}
-
-.map {
-    width: 80%;
-    height: 400px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-
-/* Information Section */
-#info {
     text-align: center;
-    margin-top: 20px;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background: #28a745;
-    color: white;
-    border: none;
+/* Navigation Bar Styling */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(0, 0, 0);  
+    /* background-color: rgba(58, 202, 58, .5);  Light green, semi-transparent */
+
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Navigation Links */
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+
+nav ul li {
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #015222;
+    background-color: rgba(255, 255, 255, 0.829);
+   
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
     cursor: pointer;
+}
+
+/* Emergency Button Styling */
+.emergency-btn {
+    background: #d91d2a; 
+    border: none;
+    padding: 10px 20px; /* Increased padding for larger size */
+    color: #fff; 
+    font-size: 1.1rem; /* Increased font size */
+    font-weight: bold;
+    border-radius: 10px; /* Slightly larger border-radius for aesthetic balance */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    text-align: center; 
+    margin-right:20px;
+}
+
+.emergency-btn a {
+    color: #fff; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hover Effect */
+.emergency-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); 
+    background: #d91d2a; 
+}
+
+/* Main header text styling */
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Paragraph text styling */
+p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Button styling */
+.btn {
+    background: linear-gradient(45deg, rgb(34, 139, 34), rgb(50, 205, 50));
+    border: none;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .btn:hover {
-    background: #218838;
+    background: linear-gradient(45deg, rgb(0, 128, 0), rgb(34, 139, 34));
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
 }
 
-/* Hidden Class */
+/* Map container styling */
+#map-container {
+    height: 90vh;
+    margin: 20px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Map full-screen height */
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Info box styling */
+#info {
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    color: #333;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: none; /* Ensure no text shadow */
+}
+
+/* Remove decoration from bottom-most text */
+#police {
+    text-shadow: none;
+    text-decoration: none;
+    color: #333; /* Default color */
+}
+.hospital {
+    text-shadow: none;
+    text-decoration: none;
+    color: #333; /* Default color */
+}
+
+/* Hidden class for optional elements */
 .hidden {
     display: none;
+    color: rgb(78, 78, 78);
+    text-shadow: none;
+    text-decoration: none;
+}
+
+/* Navigation button styling */
+#navigate-btn {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Secondary heading styling */
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.circle-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    background: linear-gradient(144deg, #2ECC71, #27AE60 50%, #1E8449);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 300ms;
+}
+
+.circle-button:hover {
+    background: linear-gradient(144deg, #1E8449, #166534 50%, #0B3D20);
+    border-color: #27AE60;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+  
+  .circle-button::after {
+    content: "ChatBot"; /* Chat icon */
+    font-size: 20px;
+    color: white;
+  }
+
+
+.logo {
+    display: none;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        z-index: 1001; /* Ensure it's always on top */
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        background: rgba(140, 127, 127, 0.6);
+        backdrop-filter: blur(10px); /* Frosted glass effect */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        position: fixed; /* Cover the whole screen */
+        width: 100vw;
+        height: 100vh; /* Full-screen menu */
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        margin-top: -100px;
+    }
+
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        padding: 20px 0;
+        list-style: none;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    /* Ensure the logo remains visible */
+    .logo {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        z-index: 1001;
+    }
+
+    /* Slider Section */
+    .carousel-background img {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover; /* Ensures the image covers the entire section */
+    }
 }

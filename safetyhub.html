@@ -3,132 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nearest Places</title>
-    <link href="img/favicon.ico" rel="icon">
-    <link href="/css/safetyhub.css" rel="stylesheet">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvAhRDojug00qPdWV7eR7TDR16cxDo928&libraries=places"></script>
+    <title>Nearest Police Station </title>
+    <link rel="stylesheet" href="/css/safetyhub.css">
 </head>
 <body>
-    <header class="header">
-        <div class="navbar">
+    <header>
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+        <nav id="navbar">
             <ul>
-                <li>Home</li>
-                <li>ReportIncident</li>
-                <li>SearchReport</li>
-                <li>EmergencyContacts</li>
-                <li>SafetyHub</li>
-                <li>ChatBot</li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="hugging.html">Report Incident</a></li>
+                <li><a href="emergency.html">Emergency Help</a></li>
+                <li><a href="SafetyHub.html">Safety Hub</a></li>
+                <li><a href="SearchReport.html">Search Report</a></li>
+                <li><a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json">ChatBot</a></li>
             </ul>
-        </div>
-        <button class="emergency-btn">EmergencySOS</button>
+            <button class="emergency-btn"><a href="https://emergency-email-sys-cqpftfxzbrgkhtvnbuevqt.streamlit.app/">Emergency SOS Help</a></button>
+        </nav>
+        <h1>Find Nearest Police Station</h1>
+        <p>Ensure your safety by locating the nearest police station.</p>
+        <button class="btn" onclick="startTracking()">Find My Location</button>
     </header>
     
-    <div class="find">
-        <h1>Locate Nearest Important Places</h1>
-        <p>Ensure your safety by locating the nearest police station and hospital</p>
-        <button class="start-tracking" onclick="startTracking()">Find Location</button>
-    </div>
-
     <section id="map-container">
-        <div id="map" class="map"></div>
+        <div id="map"></div>
     </section>
-
+    
     <section id="info" class="hidden">
         <h2>Nearest Police Station</h2>
-        <p id="police">Loading...</p>
-        <button id="navigate-police" class="btn hidden" onclick="navigateTo(policeLocation)">Navigate to Police Station</button>
+        <p id="police">Nearest Police Station: Loading...</p>
+        <button id="navigate-btn" class="btn hidden" onclick="navigate()">Navigate to Police Station</button>
         <h2>Nearest Hospital</h2>
-        <p id="hospital">Loading...</p>
-        <button id="navigate-hospital" class="btn hidden" onclick="navigateTo(hospitalLocation)">Navigate to Hospital</button>
+        <p id="hospital" class="hospital"></p>
     </section>
+    <a href="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/27/14/20250127140138-4ECR7WEA.json" class="circle-button"></a>
 
-    <script>
-        let map, userMarker, policeMarker, hospitalMarker, policeLocation, hospitalLocation;
-
-        function startTracking() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        function showPosition(position) {
-            const userLocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: userLocation,
-                zoom: 14
-            });
-            userMarker = new google.maps.Marker({
-                position: userLocation,
-                map: map,
-                title: "Your Location",
-                icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-            });
-            findPlaces(userLocation);
-        }
-
-        function showError(error) {
-            alert("Error fetching location: " + error.message);
-        }
-
-        function findPlaces(location) {
-            const service = new google.maps.places.PlacesService(map);
-
-            const requestPolice = {
-                location: location,
-                radius: 5000,
-                type: ["police"]
-            };
-            service.nearbySearch(requestPolice, (results, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
-                    policeLocation = results[0].geometry.location;
-                    policeMarker = new google.maps.Marker({
-                        position: policeLocation,
-                        map: map,
-                        title: results[0].name,
-                        icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-                    });
-                    document.getElementById("police").innerText = "Nearest Police Station: " + results[0].name + " (" + results[0].vicinity + ")";
-                    document.getElementById("navigate-police").classList.remove("hidden");
-                } else {
-                    console.error("Police station not found: ", status);
-                }
-            });
-
-            const requestHospital = {
-                location: location,
-                radius: 5000,
-                type: ["hospital"]
-            };
-            service.nearbySearch(requestHospital, (results, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK && results.length > 0) {
-                    hospitalLocation = results[0].geometry.location;
-                    hospitalMarker = new google.maps.Marker({
-                        position: hospitalLocation,
-                        map: map,
-                        title: results[0].name,
-                        icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
-                    });
-                    document.getElementById("hospital").innerText = "Nearest Hospital: " + results[0].name + " (" + results[0].vicinity + ")";
-                    document.getElementById("navigate-hospital").classList.remove("hidden");
-                } else {
-                    console.error("Hospital not found: ", status);
-                }
-            });
-            document.getElementById("info").classList.remove("hidden");
-        }
-
-        function navigateTo(destination) {
-            if (destination) {
-                window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination.lat()},${destination.lng()}`, "_blank");
-            } else {
-                alert("Location not available yet.");
-            }
-        }
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBq9FB4ubXk3VBPNVAtowT7Viek43sBgQE&libraries=places"></script>
+    <script src="/js/safetyhub.js"></script>
 </body>
 </html>
