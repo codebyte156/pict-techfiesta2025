@@ -150,7 +150,139 @@
                 background-color:  #d91d2a; 
             }
             /*Chat bot Circular Button*/
+            .circle-button {
+                position: fixed;
+                bottom: 50px;
+                right: 50px;
+                z-index: 10;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                border: 3px solid transparent;
+                background: linear-gradient(144deg, #2ECC71, #27AE60 50%, #1E8449);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                font-family: sans-serif;
+                color: white;
+                cursor: pointer;
+                font-weight: bold;
+                transition: 300ms;
+                text-decoration: none;
+            }
+
+            .circle-button:hover {
+                background: linear-gradient(144deg, #1E8449, #166534 50%, #0B3D20);
+                border-color: #27AE60;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
             
+            .circle-button::after {
+                content: "ChatBot"; 
+                font-size: 20px;
+                color: white;
+            }
+
+
+            /* .container-fluid { */
+                /* display: none; */
+            /* } */
+
+            .hamburger {
+                display: none;
+                font-size: 28px;
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                margin-top: -5px;
+            }
+
+            /*Responsive Design*/
+            @media (max-width: 768px) {
+                .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+                z-index: 1001; /* Ensure it's always on top */
+                }
+
+                .container-fluid {
+                    display: flex;
+                }
+
+                .sub-header {
+                    background: #3eaa77;
+                    padding: 30px;
+                    text-align: center;
+                    color: white;
+                    font-size: 28px;
+                    font-weight: 700;
+                }
+
+                .container {
+                    width: 100%;
+                    height: 110vh;
+                    object-fit: cover;
+
+                }
+
+                nav {
+                    display: none;
+                    flex-direction: column;
+                    background: rgba(140, 127, 127, 0.6);
+                    backdrop-filter: blur(10px); 
+                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+                    position: fixed; 
+                    width: 100vw;
+                    height: 100vh; 
+                    top: 0;
+                    left: 0;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                    margin-top: -100px;
+                }
+
+
+                nav ul {
+                    flex-direction: column;
+                    text-align: center;
+                    padding: 0;
+                }
+
+                nav ul li {
+                    padding: 20px 0;
+                    list-style: none;
+                }
+
+                nav.show {
+                    display: flex;
+                }
+                .circle-button {
+                    margin-left: 25px;
+                    width: 60px;
+                    height: 60px;
+                    font-size: 9px;
+                    bottom: 15px;
+                    right: 15px;
+                }
+                .circle-button:hover {
+                    margin-left: 25px;
+                    width: 50px;
+                    height: 50px;
+                    font-size: 9px;
+                    bottom: 15px;
+                    right: 15px;
+                }
+
+                .circle-button::after {
+                    font-size: 9px;
+                }
+            }
             /*Logo Styling*/
             .logo {
                     position: absolute;
@@ -170,7 +302,7 @@
                         <h2 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: #ffffff;">CareVault</a></h2>
                     </div>
                 </div>
-                <!--<button class="hamburger" onclick="toggleMenu()">&#9776;</button>-->
+                <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
                 <nav id="navbar">
                     <ul>
                         <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
