@@ -4,7 +4,6 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
     const incidentType = document.getElementById('incidentType').value;
     const location = document.getElementById('location').value;
     const dateOfIncident = document.getElementById('dateOfIncident').value;
-    const description = document.getElementById('description').value;
     const victimname = document.getElementById('victimname').value;
     const victimage = document.getElementById('victimage').value;
     const phydescriptionvictim = document.getElementById('phydescriptionvictim').value;
@@ -28,8 +27,6 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
     if (incidentType && location && dateOfIncident && description) {
         const prompt = `Incident involving ${incidentType}. 
         The place of incident is ${location} and the date is ${dateOfIncident}. 
-
-        Detailed description of the incident: ${description}. 
 
         Victim Details:  
         Name: ${victimname}, Age: ${victimage}, Physical Description: ${phydescriptionvictim}, Injuries or Harm: ${injuriesorharm}.  
