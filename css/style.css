@@ -4,6 +4,70 @@ body {
     background: #ecbb8e;
 }
 
+
+
+a {
+    color: #1dbf73;
+    transition: 0.3s;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #353535;
+    outline: none;
+    text-decoration: none;
+}
+
+p {
+    color: #656565;
+    padding: 0;
+    margin: 0 0 15px 0;
+    justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #353535;
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+
+/* ------------------ Back to Top ------------------ */
+.back-to-top {
+    position: fixed;
+    display: none;
+    background: #1dbf73;
+    color: #ffffff;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    line-height: 1;
+    font-size: 44px;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.3s;
+    z-index: 9;
+}
+
+.back-to-top i {
+    color: #ffffff;
+}
+
+
 /* Header Section Styling :  */
 .header {
     padding: 30px 0;
@@ -211,6 +275,7 @@ nav ul li a:hover {
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
     font-size: 22px; 
+    border-radius: 5px;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -219,6 +284,315 @@ nav ul li a:hover {
     background: #ffffff;
     color: #1dbf73;
 }
+
+
+
+/* ---------------- Banner Section ----------------- */
+.banner {
+    background: url("../img/banner.jpg") center top no-repeat;
+    background-size: cover;
+    padding: 150px 0 60px 0;
+    position: relative;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(000, 000, 000, 0.6);
+    z-index: 9;
+}
+
+.banner .container {
+    position: relative;
+    z-index: 10;
+}
+
+.banner .banner-nav {
+    text-align: center;
+}
+
+.banner .banner-box {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ffffff;
+}
+
+.banner .banner-box a {
+    color: #ffffff;
+}
+
+.banner .banner-box a:hover {
+    color: #1dbf73;
+}
+
+.banner .banner-box a:first-child {
+    padding-right: 15px;
+    border-right: 1px solid #ffffff;
+}
+
+.banner .banner-box a:last-child {
+    padding-left: 15px;
+}
+
+/* ----------------- Contact Style ----------------- */
+.contact {
+    position: relative;
+    padding: 60px 0;
+    background: #f2f2f2;
+}
+
+.contact .container {
+    max-width: 900px;
+}
+
+.contact .contact-info {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact .contact-address,
+.contact .contact-phone,
+.contact .contact-email {
+    background: #ffffff;
+    padding: 15px 30px 25px 30px;
+    text-align: center;
+    color: #353535;
+}
+
+.contact .contact-address:hover,
+.contact .contact-phone:hover,
+.contact .contact-email:hover {
+    box-shadow: 0 0 10px #dddddd;
+}
+
+.contact .contact-info i {
+    font-size: 48px;
+    display: inline-block;
+    color: #1dbf73;
+}
+
+.contact .contact-info address,
+.contact .contact-info p {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #353535;
+}
+
+.contact .contact-info h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #353535;
+}
+
+.contact .contact-info a {
+    color: #353535;
+}
+
+.contact .contact-info a:hover {
+    color: #1dbf73;
+}
+
+.contact .map {
+    position: relative;
+    background: #ffffff;
+}
+
+.contact .map:hover {
+    box-shadow: 0 0 10px #cccccc;
+}
+
+.contact .map iframe {
+    width: 100%;
+    height: 380px;
+    margin-bottom: -7px;
+}
+
+.contact .form {
+    background: #ffffff;
+    padding: 30px;
+    color: #353535;
+}
+
+.contact .form:hover {
+    box-shadow: 0 0 10px #dddddd;
+}
+
+.contact .form input,
+.contact .form textarea {
+    padding: 10px 14px;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 15px;
+}
+
+.contact .form input:focus,
+.contact .form textarea:focus {
+    border-color: #1dbf73;
+}
+
+.contact .form button[type="submit"] {
+    background: #1dbf73;
+    border: 0;
+    padding: 10px 30px;
+    color: #ffffff;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.contact .form button[type="submit"]:hover {
+    background: #353535;
+}
+
+
+/* ----------------- Footer Style ------------------ */
+.footer {
+    position: relative;
+    padding: 0 0 30px 0;
+    background: #000000;
+}
+
+.footer .footer-top {
+    background: #1dbf73;
+    padding: 60px 0 30px 0;
+}
+
+.footer .footer-top .footer-info,
+.footer .footer-top .footer-links,
+.footer .footer-top .footer-contact,
+.footer .footer-top .footer-newsletter {
+    margin-bottom: 30px;
+    
+}
+.footer .footer-top .footer-info
+{
+    text-align: center;
+}
+.footer .footer-top .footer-info h3 {
+    font-size: 34px;
+    padding: 2px 0 2px 0px;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.footer .footer-top .footer-info p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #ffffff;
+}
+
+.footer .footer-top .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #ffffff;
+    color: #1dbf73;
+    line-height: 1;
+    padding: 9px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+}
+
+.footer .footer-top .social-links a:hover {
+    background: #353535;
+    color: #ffffff;
+}
+
+.footer .footer-top h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.footer .footer-top h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100px;
+    border-bottom: 3px dashed #ffffff;
+}
+
+.footer .footer-top .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer .footer-top .footer-links ul i {
+    padding-right: 8px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.footer .footer-top .footer-links ul li {
+    border-bottom: 1px solid #ffffff;
+    padding: 7px 0;
+}
+
+.footer .footer-top .footer-links ul li:first-child {
+    padding-top: 0;
+}
+
+.footer .footer-top .footer-links ul a {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer .footer-top .footer-links ul a:hover {
+    color: #353535;
+}
+
+.footer .footer-top .footer-contact p {
+    color: #ffffff;
+    line-height: 26px;
+}
+
+.footer .footer-top .footer-newsletter input[type="email"] {
+    border: 0;
+    padding: 6px 8px;
+    width: 60%;
+}
+
+.footer .footer-top .footer-newsletter input[type="submit"] {
+    border: 0;
+    width: 40%;
+    padding: 6px 0;
+    text-align: center;
+    color: #ffffff;
+    background: #353535;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.footer .footer-top .footer-newsletter input[type="submit"]:hover {
+    background: #000000;
+}
+
+.footer .footer-top .footer-newsletter p {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.footer .copyright {
+    text-align: center;
+    padding-top: 30px;
+}
+
+
 
 /* Emergency Button Styling : */
 

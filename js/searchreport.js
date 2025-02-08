@@ -38,36 +38,36 @@ document.getElementById("searchReportButton").addEventListener("click", async ()
                     <p><strong>Date of Incident:</strong> ${data.dateOfIncident}</p>
 
                     <h3>Victim Details</h3>
-                    <p><strong>Name:</strong> ${data.victim.name}</p>
-                    <p><strong>Age:</strong> ${data.victim.age}</p>
-                    <p><strong>Physical Description:</strong> ${data.victim.physicalDescription}</p>
-                    <p><strong>Injuries:</strong> ${data.victim.injuries}</p>
+                    <p><strong>Name:</strong> ${data.victimname}</p>
+                    <p><strong>Age:</strong> ${data.victimage}</p>
+                    <p><strong>Physical Description:</strong> ${data.phydescriptionvictim}</p>
+                    <p><strong>Injuries:</strong> ${data.injuriesorharm}</p>
 
                     <h3>Accused Details</h3>
-                    <p><strong>Name:</strong> ${data.accused.name}</p>
-                    <p><strong>Description:</strong> ${data.accused.description}</p>
-                    <p><strong>Relationship:</strong> ${data.accused.relationship}</p>
-                    <p><strong>Contact/Address:</strong> ${data.accused.contact}</p>
+                    <p><strong>Name:</strong> ${data.accusedname}</p>
+                    <p><strong>Description:</strong> ${data.accuseddescription}</p>
+                    <p><strong>Relationship:</strong> ${data.accusedrelationship}</p>
+                    <p><strong>Contact/Address:</strong> ${data.accusedaddresscontact}</p>
 
                     <h3>Crime Details</h3>
-                    <p><strong>Weapons Used:</strong> ${data.crimeDetails.weaponsUsed}</p>
-                    <p><strong>Mode of Crime:</strong> ${data.crimeDetails.modeOfCrime}</p>
-                    <p><strong>Sequence of Events:</strong><br>${data.crimeDetails.eventSequence}</p>
-                    <p><strong>Witnesses:</strong> ${data.crimeDetails.witnesses}</p>
-                    <p><strong>Damage Caused:</strong> ${data.crimeDetails.damage}</p>
+                    <p><strong>Weapons Used:</strong> ${data.weapons}</p>
+                    <p><strong>Mode of Crime:</strong> ${data.modeofcrime}</p>
+                    <p><strong>Sequence of Events:</strong><br>${data.eventsequence}</p>
+                    <p><strong>Witnesses:</strong> ${data.witnesses}</p>
+                    <p><strong>Damage Caused:</strong> ${data.damage}</p>
 
                     <h3>Legal Details</h3>
-                    <p><strong>Relevant Laws:</strong> ${data.legal.relevantLaws}</p>
-                    <p><strong>Evidence Collected:</strong> ${data.legal.evidenceCollected}</p>
+                    <p><strong>Relevant Laws:</strong> ${data.laws}</p>
+                    <p><strong>Evidence Collected:</strong> ${data.evidence}</p>
 
                     <h3>Complainant Details</h3>
-                    <p><strong>Name:</strong> ${data.complainant.name}</p>
-                    <p><strong>Contact Number:</strong> ${data.complainant.contactNumber}</p>
-                    <p><strong>Address:</strong> ${data.complainant.address}</p>
+                    <p><strong>Name:</strong> ${data.complainantdetails}</p>
+                    <p><strong>Contact Number:</strong> ${data.complainantnumber}</p>
+                    <p><strong>Address:</strong> ${data.complainantaddress}</p>
 
                     <h3>Report Information</h3>
                     <p><strong>Reported At:</strong> ${new Date(data.timestamp).toLocaleString()}</p>
-                    <p><strong>Date & Time of Report:</strong> ${data.reportDetails.dateAndTimeOfReport}</p>
+                    <p><strong>Date & Time of Report:</strong> ${data.dateandtimeofreport}</p>
                 </div>
                 `;
                 document.getElementById("searchResult").innerHTML = formattedReport;

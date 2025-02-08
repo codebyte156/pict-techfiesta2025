@@ -1,4 +1,3 @@
-// Firebase Configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
@@ -10,7 +9,7 @@ const firebaseConfig = {
     messagingSenderId: "976553129981",
     appId: "1:976553129981:web:1e85d6202bf2e8d4d94b94",
     measurementId: "G-SQ8505FPMF"
-  };
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -42,57 +41,39 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
     const complainantaddress = document.getElementById('complainantaddress').value;
     const dateandtimeofreport = document.getElementById('dateandtimeofreport').value;
 
-    if (incidentType && location && dateOfIncident && victimname && complainantdetails) {
-        try {
-            const docRef = await addDoc(collection(db, "reports"), {
-                incidentType,
-                location,
-                dateOfIncident,
-                victim: {
-                    name: victimname,
-                    age: victimage,
-                    physicalDescription: phydescriptionvictim,
-                    injuries: injuriesorharm
-                },
-                accused: {
-                    name: accusedname,
-                    description: accuseddescription,
-                    relationship: accusedrelationship,
-                    contact: accusedaddresscontact
-                },
-                crimeDetails: {
-                    weaponsUsed: weapons,
-                    modeOfCrime: modeofcrime,
-                    eventSequence: eventsequence,
-                    witnesses: witnesses,
-                    damage: damage
-                },
-                legal: {
-                    relevantLaws: laws,
-                    evidenceCollected: evidence
-                },
-                complainant: {
-                    name: complainantdetails,
-                    contactNumber: complainantnumber,
-                    address: complainantaddress
-                },
-                reportDetails: {
-                    dateAndTimeOfReport: dateandtimeofreport
-                },
-                timestamp: new Date().toISOString()
-            });
-            
-            alert(`Report submitted successfully! Your Report ID: ${docRef.id}`);
-        } catch (error) {
-            console.error("Error adding document: ", error);
-        }
+    if (incidentType && location && dateOfIncident) {
+        const prompt = `Incident involving ${incidentType}. 
+        The place of incident is ${location} and the date is ${dateOfIncident}. 
+
+        Victim Details:  
+        Name: ${victimname}, Age: ${victimage}, Physical Description: ${phydescriptionvictim}, Injuries or Harm: ${injuriesorharm}.  
+
+        Accused Details:  
+        Name: ${accusedname}, Description: ${accuseddescription}, Relationship with Victim: ${accusedrelationship},  
+        Address & Contact: ${accusedaddresscontact}.  
+
+        Crime Details:  
+        Weapons Used: ${weapons}, Mode of Crime: ${modeofcrime}, Event Sequence: ${eventsequence}.  
+
+        Witnesses: ${witnesses}.  
+        Damage/Loss: ${damage}.  
+
+        Legal Aspects:  
+        Relevant Laws: ${laws}, Evidence Collected: ${evidence}.  
+
+        Complainant Details:  
+        Name: ${complainantdetails}, Contact Number: ${complainantnumber}, Address: ${complainantaddress}.  
+
+        Report Details:  
+        Date & Time of Report: ${dateandtimeofreport}.`;
+
+        await generateReport(prompt);
+
+        document.getElementById('getHelpButton').style.display = 'inline-block';
     } else {
-        alert("Please fill in all mandatory fields.");
+        alert('Please fill out all the details before generating the report.');
     }
 });
-
-
-// edit after this
 
 document.getElementById('getHelpButton').addEventListener('click', async function () {
     const incidentType = document.getElementById('incidentType').value;
@@ -100,6 +81,9 @@ document.getElementById('getHelpButton').addEventListener('click', async functio
     await generateReport(helpPrompt, true);
 });
 
+document.getElementById('confirmReportButton').addEventListener('click', function () {
+    alert('Report confirmed and sent!');
+});
 
 document.getElementById('gpsLocationButton').addEventListener('click', function () {
     if (navigator.geolocation) {
@@ -116,6 +100,14 @@ document.getElementById('gpsLocationButton').addEventListener('click', function 
         alert('Geolocation is not supported by your browser.');
     }
 });
+
+
+
+
+
+
+
+
 
 // Voice-to-Text functionality
 const voiceButtons = document.querySelectorAll('.voice-btn');
