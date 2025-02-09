@@ -119,8 +119,11 @@ document.getElementById('incidentForm').addEventListener('submit', async functio
         Name: ${complainantdetails}, Contact Number: ${complainantnumber}, Address: ${complainantaddress}.  
 
         Report Details:  
-        Date & Time of Report: ${dateandtimeofreport}.`;
-        await generateReport(prompt);
+        Date & Time of Report: ${dateandtimeofreport}.
+
+        only give output once
+        `;
+        await generateReport(prompt); 
 
         document.getElementById('getHelpButton').style.display = 'inline-block';
     } else {
