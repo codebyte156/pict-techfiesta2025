@@ -86,6 +86,8 @@ function findNearestHospital(lat, lng) {
                     label: "Hospital",
                     // icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
                 });
+                document.getElementById("info").classList.remove("hidden");
+                document.getElementById("navigate-btn2").classList.remove("hidden");
             } else {
                 document.getElementById("hospital").textContent = "Nearest Hospital/Clinic: Not Found.";
                 nearestHospitalLocation = null;
