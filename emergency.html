@@ -121,33 +121,27 @@
             
             }
 
-            /*Emergency SOS Help Button*/
-            .emergency-btn{
+            /* Emergency Button Styling : */
+
+            .emergency-btn {
                 background: #d91d2a; 
                 border: none;
-                padding: 10px 20px; /*Larger size*/
+                padding: 1px 1px;
                 color: #fff; 
-                font-size: 1.1rem; 
+                margin-top: -8px;
+                font-size: 0.9rem; 
                 font-weight: bold;
-                border-radius: 10px; 
+                border-radius: 8px; 
                 cursor: pointer;
                 transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
                 text-align: center; 
             }
-            .emergency-btn a{
+
+            .emergency-btn a {
                 color: #fff; 
                 text-decoration: none;
                 display: inline-block;
-            }
-            .emergency-btn:hover {
-                transform: scale(1.1);
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); 
-                background: #d91d2a; 
-            }
-            .emergency-btn a:hover {
-                color: #ffffff;
-                background-color:  #d91d2a; 
             }
             /*Chat bot Circular Button*/
             .circle-button {
@@ -308,9 +302,9 @@
                         <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="hugging.html">Report Incident</a></li>
-                        <li><a href="emergency.html">Emergency Help</a></li>
-                        <li><a href="safetyhub.html">Safety Hub</a></li>
-                        <li><a href="searchreport.html">Search Report</a></li>
+                        <li> <a href="searchreport.html">Search Report</a> </li>
+                        <li> <a href="https://severity-prediction-ml-ddxehrb756jv5axtyf6mrw.streamlit.app/">Severity</a> </li>
+                        <li> <a href="login.html">Validate & Proceed Report</a> </li>
                         <li> <button class="emergency-btn"><a href="https://all-in-one-sos-dmfhodfcnvbmkzwgt9q37e.streamlit.app/" target="_blank">Emergency SOS Help</a> </button> </li>
                     </ul>
                 </nav>
